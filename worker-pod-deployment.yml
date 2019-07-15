@@ -1,24 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: worker-pod-deployment
+  name: worker-app-deployment
   labels:
-    app: worker
+    app: demo-voting-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-       name: worker-pod
-       app: demo-votingapp-pod
+      name: worker-app-pod
+      app: demo-voting-app
   template:
-     metadata:
-       name: worker-pod
-       labels:
-         name: worker-pod
-         app: demo-votingapp-pod
-     spec:
-       containers:
-         - name: worker-pod
-           image: dockersamples/examplevotingapp_worker
-           ports: 
-           containerPort: 80 
+    metadata:
+      name: worker-app-pod
+      labels:
+        name: worker-app-pod
+        app: demo-voting-app
+
+    spec:
+      containers:
+      - name: worker-app
+        image: dockersamples/examplevotingapp_worker
